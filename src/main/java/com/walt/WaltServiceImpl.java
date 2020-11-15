@@ -30,17 +30,17 @@ public class WaltServiceImpl implements WaltService {
             if(checkOneDriverIsOk(drivers.get(0),deliveryTime)){
                 newDelivery=new Delivery(drivers.get(0),restaurant,customer,deliveryTime);
                 deliveryRepository.save(newDelivery);
-                WaltApplication.getLog().info("The driver get delivery");
+                WaltApplication.getLog().debug("The driver get delivery");
                 return newDelivery;
             }
             else{
-                WaltApplication.getLog().error("The driver not available");
+                WaltApplication.getLog().debug("The driver not available");
                 return null;
             }
         }
         // there is 0 driver in this city
         else if(drivers.size()==0){
-            WaltApplication.getLog().error("There is 0 driver in this city");
+            WaltApplication.getLog().debug("There is 0 driver in this city");
             return null;
         }
         //chose the less busy driver
@@ -68,16 +68,16 @@ public class WaltServiceImpl implements WaltService {
     private boolean validateCustomerAndRestaurantAndDate(Customer customer,Restaurant restaurant,Date date) {
         //check if the customer exist
         if(customer== null){
-            WaltApplication.getLog().info("The customer don't exist");
+            WaltApplication.getLog().debug("The customer don't exist");
             return false;
         }
         // check the city of customer equal to city of restaurant
         if(customer.getCity().getId()!= restaurant.getCity().getId()){
-            WaltApplication.getLog().info("The city of customer is different from restaurant");
+            WaltApplication.getLog().debug("The city of customer is different from restaurant");
             return false;
         }
         if(date ==null){
-            WaltApplication.getLog().info("Error in date");
+            WaltApplication.getLog().debug("Error in date");
             return false;
         }
         return true;
@@ -99,13 +99,13 @@ public class WaltServiceImpl implements WaltService {
         }
         Driver driverLessBusy= getLessDriverBusy(availableDrivers);
         if (driverLessBusy==null){
-            WaltApplication.getLog().error("No available driver all busy");
+            WaltApplication.getLog().debug("No available driver all busy");
             return null;
         }
         else{
             Delivery newDelivery=new Delivery(driverLessBusy,restaurant,customer,deliveryTime);
             deliveryRepository.save(newDelivery);
-            WaltApplication.getLog().info("The driver get delivery");
+            WaltApplication.getLog().debug("The driver get delivery");
             return newDelivery;
         }
     }
