@@ -22,7 +22,7 @@ When customers order, they must provide: Name, City, Address, Time of delivery, 
 
 3. Walt want to rank the drivers based on their total distance they did for deliveries. Please provide a detailed report to display the drivers name and the total distance of delivery order by total distance in descending order
 
-4. Provide same report as No. 3 in specific city (Bonus – not a must)
+4. Provide same report as No. 3 in specific city.
 
 5. Add Junit tests to test your work
 
@@ -33,10 +33,4 @@ When customers order, they must provide: Name, City, Address, Time of delivery, 
 * If no available driver in city – provide proper error message
 * When a customer place an order, you can assume the Restaurant exist in the system, customer may or may not exist 
 
-<b>Important notes:</b>
-1. Make sure to import the project as Maven project
-2. WaltTest is configured with basic data, you may use it
-3. Model, Repositories are implemented, you may add any additional class, repository or service
-4. Just to be clear, you are required to implement the interface: WaltService
 
-Good-luck!
